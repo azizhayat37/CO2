@@ -1,0 +1,11 @@
+18 MARCH 2024
+
+- deleting empty rows, making sure there is only one header row at the top, renaming columns with names that have spaces
+- country code is now furthest left column, 3 letters
+- split them into two different CSVs (not xlsx files) and add to /countrydata/data directory
+- used "python3 manage.py startapp countrydata" to create the app
+- added the app "countrydata" to the installed apps list in settings in the CO2 folder
+- creating the model classes in countrydata/models.py
+- mkdir management >> cd management >> mkdir commands >> cd commads >> touch parse_csv.py
+- use "https://github.com/scharlau/polar_bears_django" as basis for creating parse_csv.py
+

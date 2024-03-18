@@ -1,0 +1,46 @@
+from django.conf import settings
+from django.db import models
+from django.utils import timezone
+
+class Data(models.Model):
+    countryCode = models.CharField(max_length=3, primary_key=True)
+    countryName = models.CharField(max_length=50)
+    co2_1990 = models.FloatField()
+    co2_1991 = models.FloatField()
+    co2_1992 = models.FloatField()
+    co2_1993 = models.FloatField()
+    co2_1994 = models.FloatField()
+    co2_1995 = models.FloatField()
+    co2_1996 = models.FloatField()
+    co2_1997 = models.FloatField()
+    co2_1998 = models.FloatField()
+    co2_1999 = models.FloatField()
+    co2_2000 = models.FloatField()
+    co2_2001 = models.FloatField()
+    co2_2002 = models.FloatField()
+    co2_2003 = models.FloatField()
+    co2_2004 = models.FloatField()
+    co2_2005 = models.FloatField()
+    co2_2006 = models.FloatField()
+    co2_2007 = models.FloatField()
+    co2_2008 = models.FloatField()
+    co2_2009 = models.FloatField()
+    co2_2010 = models.FloatField()
+    co2_2011 = models.FloatField()
+    co2_2012 = models.FloatField()
+    co2_2013 = models.FloatField()
+    co2_2014 = models.FloatField()
+    co2_2015 = models.FloatField()
+    co2_2016 = models.FloatField()
+    co2_2017 = models.FloatField()
+    co2_2018 = models.FloatField()
+    co2_2019 = models.FloatField()
+    co2_2020 = models.FloatField()
+
+class Metadata(models.Model):
+    id = models.AutoField(primary_key=True)
+    countryCode = models.ForeignKey(Data, on_delete=models.CASCADE)
+    region = models.CharField(max_length=50)
+    incomeGroup = models.CharField(max_length=50)
+    specialNotes = models.CharField(max_length=500, null=True)
+
