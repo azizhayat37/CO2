@@ -8,4 +8,8 @@
 - creating the model classes in countrydata/models.py
 - mkdir management >> cd management >> mkdir commands >> cd commads >> touch parse_csv.py
 - use "https://github.com/scharlau/polar_bears_django" as basis for creating parse_csv.py
+- python3 manage.py parse_csv
+
+>>> Please see the CSV files in data
+>>> in DATA, countrycode is the primary key, it is references as a foreign key in the METADATA table
 
