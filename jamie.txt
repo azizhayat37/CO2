@@ -1,0 +1,8 @@
+19 MARCH 2024
+
+- Created templates/base.html and templates/home.html (sample) under /countrydata
+- Created urls.py under /countrydata
+- Added lines 4-5 in /countrydata/views.py
+- Added lines 19-20 & 24-25 in /CO2/urls.py
+
+***Not done yet, pending for test run 
