@@ -1,61 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Worldwide CO2 Emissions Data</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Global CO2 Emissions Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        .w3-sidebar a {font-family: "Roboto", sans-serif}
-        body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .sidebar {
+            background-color: #024259;
+            color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .sidebar h1 {
+            font-weight: 600;
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        .sidebar a {
+            display: block;
+            color: #aad8d3;
+            padding: 10px 0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .sidebar a:hover {
+            color: #ffffff;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .main-content h2 {
+            font-weight: 600;
+            color: #024259;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
-<body class="w3-content" style="max-width:1200px">
+<body>
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px;" id="mySidebar">
-    <div class="w3-container w3-display-container w3-padding-16">
-        <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-        <h3 class="w3-wide"><b>CO2 Emissions Data</b></h3>
-    </div>
-    <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-        <a href="{% url 'home' %}" class="w3-bar-item w3-button">Home</a>
-        <a href="#" class="w3-bar-item w3-button">Comparison</a>
-        <a href="#" class="w3-bar-item w3-button">About</a>
-    </div>
-</nav>
-
-<!-- Top menu on small screens -->
-<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-    <div class="w3-bar-item w3-padding-24 w3-wide">CO2 Emissions</div>
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-</header>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- Page content -->
-<div class="w3-main" style="margin-left:250px">
-    {% block content %}
-    <!-- Dynamic content will be placed here -->
-    {% endblock %}
+<div class="sidebar">
+    <h1>CO2 Emissions</h1>
+    <a href="#home">Home</a>
+    <a href="#comparison">Comparison</a>
+    <a href="#about">About Us</a>
 </div>
 
-<script>
-// Open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-}
-
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-}
-</script>
+<div class="main-content">
+    <h2>Welcome to the Global CO2 Emissions Dashboard</h2>
+    <p>This platform provides a comprehensive view on global CO2 emissions, offering insights of trends and comparisons across countries from 1990 to 2020.</p>
+</div>
 
 </body>
 </html>
