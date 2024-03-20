@@ -5,4 +5,5 @@
 - Added lines 4-5 in /countrydata/views.py
 - Added lines 19-20 & 24-25 in /CO2/urls.py
 
-***Not done yet, pending for test run 
+20 MARCH 2024
+- Fixed issues of base.html and home.html (changed design of base.html and removed block content of home.html for later update)
