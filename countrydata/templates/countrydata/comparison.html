@@ -7,67 +7,116 @@
         justify-content: space-between;
         margin-bottom: 20px;
     }
+
     .chart-container {
-        height: 400px;
+        height: 430px;
         margin-bottom: 20px;
     }
+
     .country-details {
         width: 48%; /* Slightly less than half to account for padding/margins */
     }
+
     .country-details-container {
         display: flex;
         justify-content: space-between;
     }
-    
+
+    .dropdown-container:nth-of-type(odd) {
+        margin-bottom: 0; /* Remove margin-bottom for odd-indexed dropdown containers */
+    }
+
+    .dropdown-container form {
+        display: flex;
+        align-items: center; /* Align form items vertically */
+    }
+
+    .dropdown-container form div {
+        margin-right: 10px; /* Adjust the spacing between form elements */
+    }
+
+    .error-message {
+        color: red;
+        margin-top: 10px;
+    }
 </style>
 
 <div class="main-content">
     <!-- Comparison Header -->
     <h2>Compare Country Emissions</h2>
     
-    <!-- Dropdown Lists -->
+    <!-- First Dropdown Container -->
     <div class="dropdown-container">
-        <div>
-            <label for="country1">Select Country 1:</label>
-            <select id="country1" name="country1" class="country-dropdown">
-                <!-- Options will be dynamically loaded here -->
-            </select>
-        </div>
-        <div>
-            <label for="country2">Select Country 2:</label>
-            <select id="country2" name="country2" class="country-dropdown">
-                <!-- Options will be dynamically loaded here -->
-            </select>
-        </div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <form id="comparison-form" method="GET" action="{% url 'comparison' %}">
+            <div>
+                <label for="country1">Select Country 1:</label>
+                <select id="country1" name="country1" class="country-dropdown">
+                    <option value="">Select Country</option>
+                    {% for country in countries %}
+                        <option value="{{ country.countryCode }}">{{ country.countryName }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="country2">Select Country 2:</label>
+                <select id="country2" name="country2" class="country-dropdown">
+                    <option value="">Select Country</option>
+                    {% for country in countries %}
+                        <option value="{{ country.countryCode }}">{{ country.countryName }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <button id="compare-button" type="submit">Compare</button>
+            </div>
+        </form>
     </div>
-    
+
     <!-- Chart Placeholder -->
     <div id="chart-container" class="chart-container">
         <!-- Chart will be rendered here -->
-        <!-- The chart will be passed from plotly as an HTML figure-->
+        {{ graph_html|safe }}
     </div>
-    
+
+    <!-- Error Message -->
+    <p id="error-message" class="error-message" style="display: none;">Please select two different countries.</p>
+
     <!-- Country Details -->
     <div class="country-details-container">
         <div id="country1-details" class="country-details">
             <!-- Country 1 details will be loaded here -->
-            <h3>USA</h3>
-            <p>Income Level: High income</p>
-            <p>Region: North America</p>
-            <!--  I'm going to add a conditional here to leave it blank if there are no notes  -->
-            <p>Notes: ...</p>
+            {% if country1_data %}
+                <h3>{{ country1_data.countryName }}</h3>
+                <p>Income Level: {{ country1_details.income_level }}</p>
+                <p>Region: {{ country1_details.region }}</p>
+                {% if country1_details.notes %}
+                    <p>Notes: {{ country1_details.notes }}</p>
+                {% endif %}
+            {% endif %}
         </div>
         <div id="country2-details" class="country-details">
             <!-- Country 2 details will be loaded here -->
-            <h3>China</h3>
-            <p>Income Level: Upper middle income</p>
-            <p>Region: East Asia & Pacific</p>
-            <!--  I'm going to add a conditional here to leave it blank if there are no notes  -->
-            <p>Notes: ...</p>
+            {% if country2_data %}
+                <h3>{{ country2_data.countryName }}</h3>
+                <p>Income Level: {{ country2_details.income_level }}</p>
+                <p>Region: {{ country2_details.region }}</p>
+                {% if country2_details.notes %}
+                    <p>Notes: {{ country2_details.notes }}</p>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('comparison-form').addEventListener('submit', function(event) {
+        var country1 = document.getElementById('country1').value;
+        var country2 = document.getElementById('country2').value;
+        if (country1 === country2) {
+            event.preventDefault(); // Prevent form submission
+            document.getElementById('error-message').style.display = 'block'; // Display error message
+        }
+    });
+</script>
+
 {% endblock %}

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-vo2agipfut8hi@_&hi2gnd95wzg)b9x#fq%dj(-%x4%q7s&o4r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'slalomoctopus-ferraridefine-8000.codio-box.uk']
 
 
 # Application definition

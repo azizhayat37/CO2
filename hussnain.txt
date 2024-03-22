@@ -1,0 +1,17 @@
+03/22/2024
+
+> Developed logics for country comparison in views.py
+> Developed logics for emission comparison in views.py
+> Changed the comparison.html file to incorporate those logics
+> Used JS for selecting only one country at a time in comparison.html
+> Encountered an error while displaying the error -_- and tried trouble shooting
+> Made changes in plotly file to accurately show the graph_html
+> Labeled the axis in chartmaker.py file
+> Tested the initial working of the website
+> Added my codio's box URL to the list of allowed hosts
+
+-----------
+
+
+
+
