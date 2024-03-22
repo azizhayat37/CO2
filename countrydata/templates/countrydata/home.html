@@ -1,5 +1,62 @@
 {% extends "countrydata/base.html" %}
 
 {% block content %}
+<style>
+    /* Table Styles */
+    .modern-table {
+        border-collapse: collapse;
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .modern-table th, .modern-table td {
+        border: 1px solid #ddd;
+        padding: 8px 16px;
+        text-align: left;
+    }
+    .modern-table th {
+        background-color: #024259;
+        color: white;
+    }
+    .modern-table tr:nth-child(even){background-color: #f2f2f2;}
+    .modern-table tr:hover {background-color: #ddd;}
+</style>
 
+<div class="content-container" style="margin-left: 250px; padding: 20px;">
+    <form action="{% url 'home' %}" method="get">
+        <div>
+            <label for="year">Select a Year:</label>
+            <select id="year" name="year">
+                <option value="">--- Select a Year ---</option>
+                {% for year in years %}
+                    <option value="{{ year }}" {% if selected_year == year %}selected{% endif %}>{{ year }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Show Top 10">
+        </div>
+    </form>
+
+    {% if countries %}
+    <div>
+        <h3>Top 10 CO2 Emissions Countries in {{ selected_year }}</h3>
+        <table class="modern-table">
+            <thead>
+                <tr>
+                    <th>Country Code</th>
+                    <th>Country Name</th>
+                    <th>CO2 Emissions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for country in countries %}
+                <tr>
+                    <td>{{ country.countryCode }}</td>
+                    <td>{{ country.countryName }}</td>
+                    <td>{{ country.co2_emissions }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}
