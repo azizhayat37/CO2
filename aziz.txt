@@ -13,3 +13,9 @@
 >>> Please see the CSV files in data
 >>> in DATA, countrycode is the primary key, it is references as a foreign key in the METADATA table
 
+22 MARCH 2024
+
+- amended base.html to change links in the navbar and added {% block content %} and {% endblock %}
+- added comparison to urls.py
+- added a view function to views.py for comparison page
+- created HTML template for comparison.html

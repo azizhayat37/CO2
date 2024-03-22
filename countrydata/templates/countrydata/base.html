@@ -64,8 +64,8 @@
 
 <div class="sidebar">
     <h1>CO2 Emissions</h1>
-    <a href="#home">Home</a>
-    <a href="#comparison">Comparison</a>
+    <a href="{%url 'home' %}">Home</a>
+    <a href="{%url 'comparison' %}">Comparison</a>
     <a href="#about">About Us</a>
 </div>
 
@@ -73,6 +73,9 @@
     <h2>Welcome to the Global CO2 Emissions Dashboard</h2>
     <p>This platform provides a comprehensive view on global CO2 emissions, offering insights of trends and comparisons across countries from 1990 to 2020.</p>
 </div>
+
+{% block content %}
+{% endblock %}
 
 </body>
 </html>

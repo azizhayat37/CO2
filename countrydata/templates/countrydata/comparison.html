@@ -1,0 +1,73 @@
+{% extends "countrydata/base.html" %}
+
+{% block content %}
+<style>
+    .dropdown-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .chart-container {
+        height: 400px;
+        margin-bottom: 20px;
+    }
+    .country-details {
+        width: 48%; /* Slightly less than half to account for padding/margins */
+    }
+    .country-details-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+</style>
+
+<div class="main-content">
+    <!-- Comparison Header -->
+    <h2>Compare Country Emissions</h2>
+    
+    <!-- Dropdown Lists -->
+    <div class="dropdown-container">
+        <div>
+            <label for="country1">Select Country 1:</label>
+            <select id="country1" name="country1" class="country-dropdown">
+                <!-- Options will be dynamically loaded here -->
+            </select>
+        </div>
+        <div>
+            <label for="country2">Select Country 2:</label>
+            <select id="country2" name="country2" class="country-dropdown">
+                <!-- Options will be dynamically loaded here -->
+            </select>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+    <!-- Chart Placeholder -->
+    <div id="chart-container" class="chart-container">
+        <!-- Chart will be rendered here -->
+        <!-- The chart will be passed from plotly as an HTML figure-->
+    </div>
+    
+    <!-- Country Details -->
+    <div class="country-details-container">
+        <div id="country1-details" class="country-details">
+            <!-- Country 1 details will be loaded here -->
+            <h3>USA</h3>
+            <p>Income Level: High income</p>
+            <p>Region: North America</p>
+            <!--  I'm going to add a conditional here to leave it blank if there are no notes  -->
+            <p>Notes: ...</p>
+        </div>
+        <div id="country2-details" class="country-details">
+            <!-- Country 2 details will be loaded here -->
+            <h3>China</h3>
+            <p>Income Level: Upper middle income</p>
+            <p>Region: East Asia & Pacific</p>
+            <!--  I'm going to add a conditional here to leave it blank if there are no notes  -->
+            <p>Notes: ...</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
