@@ -12,6 +12,8 @@
 
 -----------
 
+03/23/2024
 
+> Fixed the error message popup - there was an issue with its positioning
 
 

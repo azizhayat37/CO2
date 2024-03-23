@@ -2,6 +2,7 @@
 
 {% block content %}
 <style>
+    
     .dropdown-container {
         display: flex;
         justify-content: space-between;
@@ -34,10 +35,21 @@
     .dropdown-container form div {
         margin-right: 10px; /* Adjust the spacing between form elements */
     }
+    .error-message {
+    position: absolute;
+    top: 50%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: black;
+    z-index: 1000; /* Ensure the error message is on top of other elements */
+    }
 
     .error-message {
-        color: red;
-        margin-top: 10px;
+        color: black;
+        margin: 0; /* Remove default margin */
     }
 </style>
 
