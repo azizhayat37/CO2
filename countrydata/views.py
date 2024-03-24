@@ -104,3 +104,7 @@ def compare_emissions(request):
         return render(request, 'countrydata/comparison.html', context)
 
     return render(request, 'countrydata/comparison.html')
+
+def about(request):
+    context = {}
+    return render(request, 'countrydata/about.html', context)

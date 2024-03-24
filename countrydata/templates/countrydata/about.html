@@ -1,0 +1,46 @@
+{% extends "countrydata/base.html" %}
+
+{% block content %}
+<style>
+    /* Styles to ensure consistency without adding a content box */
+    .content-container {
+        margin-left: 250px; /* Adjust margin to not overlap with the sidebar */
+        padding: 20px;
+    }
+
+    .content-container h2 {
+        color: #024259;
+        margin-bottom: 20px;
+    }
+
+    .content-container p, .content-container ul {
+        text-align: justify;
+        margin-bottom: 10px;
+    }
+
+    .content-container ul {
+        list-style-type: disc;
+        margin-left: 20px;
+    }
+
+    .content-container a {
+        color: #024259;
+        text-decoration: none;
+    }
+
+    .content-container a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="content-container">
+    <h2>About</h2>
+    <p>This application provides users with accessible, thorough data on global CO2 emissions. It facilitates the understanding of emissions trends and the comparative analysis of countries based on their CO2 output.</p>
+    <h2>Features</h2>
+    <ul>
+        <li>Interactive charts and graphs depicting CO2 emissions trends over time.</li>
+        <li>Comparative analysis tools for side-by-side evaluation of different countries’ emissions.</li>
+        <li>Up-to-date data covering a comprehensive timeline from 1990 to 2020.</li>
+    </ul>
+</div>
+{% endblock %}
