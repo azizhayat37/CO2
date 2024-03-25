@@ -1,0 +1,3 @@
+23 MARCH 2024
+- Created templates/about.html 
+- Updated base.html, urls.py & views.py
