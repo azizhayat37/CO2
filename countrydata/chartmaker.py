@@ -42,8 +42,8 @@ def create_double_bar_chart(country1, country2, start_year, end_year):
     fig.update_layout(
         barmode='group', 
         xaxis_tickangle=-45,
-        xaxis_title='Duration',  # Set x-axis title
-        yaxis_title='Emission Rate'  # Set y-axis title
+        xaxis_title='Year',  # Set x-axis title
+        yaxis_title='CO2 Emissions (Metric Tons per Capita)'  # Set y-axis title
     )
 
     return fig.to_html(full_html=False)

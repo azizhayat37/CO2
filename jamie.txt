@@ -1,15 +1,15 @@
 19 MARCH 2024
-- Created templates/base.html and templates/home.html (sample) under /countrydata
+- Created templates/base.html and templates/home.html (sample)
 - Created urls.py under /countrydata
-- Set up urls.py to handle home page URL (/countrydata)
-- Added lines 19-20 & 24-25 in /CO2/urls.py
+- Set up countrydata/urls.py to handle home page URL
+- Added lines 19-20 & 24-25 in CO2/urls.py
 
 20 MARCH 2024
 - Fixed issues of base.html and home.html (changed design of base.html and removed block content of home.html for later update)
 
 22 MARCH 2024
 - Updated home.html to show Top 10 CO2 Emissions Countries (with drop down list to select year)
-- Updated home view in views.py. Modified home view to handle year selection and fetch Top 10 Countries based on CO2 emissions for that year.
+- Updated home view in views.py (modified home view to handle year selection and fetch Top 10 Countries based on CO2 emissions for that year)
 
 26 MARCH 2024
-- Updated home.html and views.py to display default table on home page (instead of blank and pending user selection)
+- Updated home.html and views.py to display default table on home page (instead of blank and pending for user selection)
