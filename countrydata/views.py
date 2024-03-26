@@ -6,13 +6,12 @@ from .chartmaker import create_double_bar_chart
 
 def home(request):
     years = range(1990, 2021)
-    selected_year = request.GET.get('year')
-    countries = None
-
-    if selected_year:
-        co2_field = f'co2_{selected_year}'
-        countries = Data.objects.all().annotate(co2_emissions=F(co2_field)).order_by('-co2_emissions')[:10]
-
+    selected_year = request.GET.get('year', '2020')  # Set default year here if not provided
+    co2_field = f'co2_{selected_year}' if selected_year else 'co2_2020'  # Default to 2020 data if no year is selected
+    
+    # Ensure countries always has data by querying the default or selected year
+    countries = Data.objects.all().annotate(co2_emissions=F(co2_field)).order_by('-co2_emissions')[:10]
+    
     context = {
         'years': years,
         'selected_year': selected_year,

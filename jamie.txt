@@ -10,3 +10,6 @@
 22 MARCH 2024
 - Updated home.html to show Top 10 CO2 Emissions Countries (with drop down list to select year)
 - Updated home view in views.py. Modified home view to handle year selection and fetch Top 10 Countries based on CO2 emissions for that year.
+
+26 MARCH 2024
+- Updated home.html and views.py to display default table on home page (instead of blank and pending user selection)
