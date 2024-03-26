@@ -6,7 +6,7 @@
         border-collapse: collapse;
         width: 100%;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        margin-top: 20px; /* Added some space above the table for aesthetics */
+        margin-top: 20px;
     }
     .modern-table th, .modern-table td {
         border: 1px solid #ddd;
@@ -19,25 +19,58 @@
     }
     .modern-table tr:nth-child(even) {background-color: #f2f2f2;}
     .modern-table tr:hover {background-color: #ddd;}
+
+    /* Styles for the header container */
+    .header-container {
+        font-weight: 600;
+        color: #024259;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 250px; /* Align with the sidebar */
+        margin-right: 20px; /* Consistent with padding */
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Form alignment and styling */
+    .year-selection-form {
+        display: flex;
+        align-items: center;
+    }
+    .year-selection-form label,
+    .year-selection-form select,
+    .year-selection-form input[type="submit"] {
+        margin-left: 8px;
+    }
+
+    .content-container {
+        padding: 0 20px;
+        margin-left: 250px;
+    }
 </style>
 
-<div class="content-container" style="margin-left: 250px; padding: 20px;">
-    <form action="{% url 'home' %}" method="get">
-        <div>
-            <label for="year">Select a Year:</label>
-            <select id="year" name="year">
-                <!-- This option acts as a placeholder and prompts user selection -->
-                <option value="" {% if not selected_year %}selected{% endif %}>--- Select a Year ---</option>
-                {% for year in years %}
-                    <option value="{{ year }}" {% if selected_year|stringformat:"s" == year|stringformat:"s" %}selected{% endif %}>{{ year }}</option>
-                {% endfor %}
-            </select>
-            <input type="submit" value="Show Top 10">
-        </div>
-    </form>
+<div class="main-content">
+    <h2>Welcome to the Global CO2 Emissions Dashboard</h2>
+    <p>This platform gives a comprehensive view on global CO2 emissions, offering insights of trends and comparisons across countries from 1990 to 2020.</p>
+</div>
 
+<div class="header-container">
+    <h2>Top 10 CO2 Emissions Countries{% if selected_year %} in {{ selected_year }}{% else %} in Default Year{% endif %}</h2>
+    <form class="year-selection-form" action="{% url 'home' %}" method="get">
+        <label for="year">Select a Year:</label>
+        <select id="year" name="year">
+            <option value="" {% if not selected_year %}selected{% endif %}>--- Select a Year ---</option>
+            {% for year in years %}
+            <option value="{{ year }}" {% if selected_year|stringformat:"s" == year|stringformat:"s" %}selected{% endif %}>{{ year }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Show Top 10">
+    </form>
+</div>
+
+<div class="content-container">
     {% if countries %}
-    <h3>Top 10 CO2 Emissions Countries in {{ selected_year }}</h3>
     <table class="modern-table">
         <thead>
             <tr>
