@@ -13,3 +13,7 @@
 
 26 MARCH 2024
 - Updated home.html and views.py to display default table on home page (instead of blank and pending for user selection)
+
+27 MARCH 2024
+- Updated comparison.html and views.py to display default graph on comparison page (instead of blank and pending for user selection)
+- Updated chartmaker.py to add graph title

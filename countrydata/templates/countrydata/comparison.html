@@ -65,16 +65,18 @@
                 <select id="country1" name="country1" class="country-dropdown">
                     <option value="">Select Country</option>
                     {% for country in countries %}
-                        <option value="{{ country.countryCode }}">{{ country.countryName }}</option>
+                        <option value="{{ country.countryCode }}" {% if country.countryCode == country1_id %}selected="selected"{% endif %}>
+                            {{ country.countryName }}
+                        </option>
                     {% endfor %}
                 </select>
-            </div>
-            <div>
-                <label for="country2">Select Country 2:</label>
+                
                 <select id="country2" name="country2" class="country-dropdown">
                     <option value="">Select Country</option>
                     {% for country in countries %}
-                        <option value="{{ country.countryCode }}">{{ country.countryName }}</option>
+                        <option value="{{ country.countryCode }}" {% if country.countryCode == country2_id %}selected="selected"{% endif %}>
+                            {{ country.countryName }}
+                        </option>
                     {% endfor %}
                 </select>
             </div>
@@ -83,7 +85,7 @@
             </div>
         </form>
     </div>
-
+    
     <!-- Chart Placeholder -->
     <div id="chart-container" class="chart-container">
         <!-- Chart will be rendered here -->

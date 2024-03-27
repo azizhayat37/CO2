@@ -43,4 +43,3 @@ class Metadata(models.Model):
     region = models.CharField(max_length=50)
     incomeGroup = models.CharField(max_length=50)
     specialNotes = models.CharField(max_length=500, null=True)
-

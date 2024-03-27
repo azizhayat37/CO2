@@ -9,7 +9,7 @@ def home(request):
     selected_year = request.GET.get('year', '2020')  # Set default year here if not provided
     co2_field = f'co2_{selected_year}' if selected_year else 'co2_2020'  # Default to 2020 data if no year is selected
     
-    # Ensure countries always has data by querying the default or selected year
+    # Ensure countries always has data by querying default or selected year
     countries = Data.objects.all().annotate(co2_emissions=F(co2_field)).order_by('-co2_emissions')[:10]
     
     context = {
@@ -21,44 +21,45 @@ def home(request):
 
 def comparison(request):
     countries = Data.objects.all()
-    country1_id = request.GET.get('country1')
-    country2_id = request.GET.get('country2')
+    # Default to USA ('USA') and China ('CHN') if no specific countries are selected
+    default_country1_id = 'USA'  
+    default_country2_id = 'CHN'  
+    country1_id = request.GET.get('country1', default_country1_id)
+    country2_id = request.GET.get('country2', default_country2_id)
 
-    country1_data = None
-    country2_data = None
-    graph_html = None
-    country1_details = None
-    country2_details = None
+    country1_data = get_object_or_404(Data, countryCode=country1_id)
+    country2_data = get_object_or_404(Data, countryCode=country2_id)
+    
+    # Create a dynamic title for the graph
+    graph_title = f"CO2 Emissions: {country1_data.countryName} vs {country2_data.countryName}"
+    
+    graph_html = create_double_bar_chart(country1_id, country2_id, 1990, 2020, title=graph_title)
 
-    if country1_id and country2_id:
-        country1_data = get_object_or_404(Data, countryCode=country1_id)
-        country2_data = get_object_or_404(Data, countryCode=country2_id)
-        graph_html = create_double_bar_chart(country1_id, country2_id, 1990, 2020)
+    country1_metadata = get_object_or_404(Metadata, countryCode=country1_id)
+    country2_metadata = get_object_or_404(Metadata, countryCode=country2_id)
 
-        # Fetch country details from Metadata model
-        country1_metadata = get_object_or_404(Metadata, countryCode=country1_data)
-        country2_metadata = get_object_or_404(Metadata, countryCode=country2_data)
+    country1_details = {
+        'name': country1_data.countryName,
+        'income_group': country1_metadata.incomeGroup,
+        'region': country1_metadata.region,
+        'notes': country1_metadata.specialNotes
+    }
 
-        # Construct country details dictionary
-        country1_details = {
-            'name': country1_data.countryName,
-            'income_level': country1_metadata.incomeGroup,
-            'region': country1_metadata.region,
-            'notes': country1_metadata.specialNotes
-        }
-
-        country2_details = {
-            'name': country2_data.countryName,
-            'income_level': country2_metadata.incomeGroup,
-            'region': country2_metadata.region,
-            'notes': country2_metadata.specialNotes
-        }
+    country2_details = {
+        'name': country2_data.countryName,
+        'income_group': country2_metadata.incomeGroup,
+        'region': country2_metadata.region,
+        'notes': country2_metadata.specialNotes
+    }
 
     context = {
         'countries': countries,
+        'country1_id': country1_id,
+        'country2_id': country2_id,
         'country1_data': country1_data,
         'country2_data': country2_data,
         'graph_html': graph_html,
+        'graph_title': graph_title,
         'country1_details': country1_details,
         'country2_details': country2_details,
     }
@@ -80,14 +81,14 @@ def compare_emissions(request):
         # Fetch country details
         country1_details = {
             'name': country1_data.countryName,
-            'income_level': country1_data.incomeLevel,
+            'income_group': country1_data.incomeGroup,
             'region': country1_data.region,
             'notes': country1_data.notes
         }
 
         country2_details = {
             'name': country2_data.countryName,
-            'income_level': country2_data.incomeLevel,
+            'income_group': country2_data.incomeGroup,
             'region': country2_data.region,
             'notes': country2_data.notes
         }
