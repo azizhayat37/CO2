@@ -1,7 +1,7 @@
 from .models import Data
 import plotly.graph_objects as go
 
-# Correctly formats the year for database query purposes
+# Format year for database query purposes
 def year_in_db(year):
     return f'co2_{year}'
 
@@ -22,7 +22,7 @@ def create_double_bar_chart(country1_code, country2_code, start_year, end_year, 
     country1_name = Data.objects.filter(countryCode=country1_code).values_list('countryName', flat=True).first()
     country2_name = Data.objects.filter(countryCode=country2_code).values_list('countryName', flat=True).first()
 
-    # Update the title to include country names if available
+    # Update title to include country names if available
     if country1_name and country2_name:
         title = f"CO2 Emissions: {country1_name} vs {country2_name}"
 

@@ -33,7 +33,7 @@
     }
 
     .dropdown-container form div {
-        margin-right: 10px; /* Adjust the spacing between form elements */
+        margin-right: 10px; /* Adjust spacing between form elements */
     }
     .error-message {
     position: absolute;
@@ -44,7 +44,7 @@
     padding: 10px 20px;
     border-radius: 5px;
     color: black;
-    z-index: 1000; /* Ensure the error message is on top of other elements */
+    z-index: 1000; /* Ensure error message is on top of other elements */
     }
 
     .error-message {
@@ -54,10 +54,10 @@
 </style>
 
 <div class="main-content">
-    <!-- Comparison Header -->
+    <!-- Comparison header -->
     <h2>Compare Countries CO2 Emissions</h2>
     
-    <!-- First Dropdown Container -->
+    <!-- First dropdown container -->
     <div class="dropdown-container">
         <form id="comparison-form" method="GET" action="{% url 'comparison' %}">
             <div>
@@ -86,16 +86,16 @@
         </form>
     </div>
     
-    <!-- Chart Placeholder -->
+    <!-- Chart placeholder -->
     <div id="chart-container" class="chart-container">
         <!-- Chart will be rendered here -->
         {{ graph_html|safe }}
     </div>
 
-    <!-- Error Message -->
+    <!-- Error message -->
     <p id="error-message" class="error-message" style="display: none;">Please select two different countries.</p>
 
-    <!-- Country Details -->
+    <!-- Country details -->
     <div class="country-details-container">
         <div id="country1-details" class="country-details">
             <!-- Country 1 details will be loaded here -->

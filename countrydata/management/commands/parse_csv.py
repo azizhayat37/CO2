@@ -11,17 +11,17 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        # clear out teh database in order to avoid redundancy
+        # Clear out database in order to avoid redundancy
         Data.objects.all().delete()
         print("Data cleared")
-        # create table again
+        # Create table again
 
-        # open the CSV and begin to read it
+        # Open CSV and begin to read it
         base_dir = Path(__file__).resolve().parent.parent.parent.parent
         print(base_dir)
         with open(str(base_dir) + '/countrydata/data/CO2_data.csv', 'r') as file:
             reader = csv.reader(file, delimiter=',')
-            next(reader) # skip the header, single row
+            next(reader) # Skip header, single row
             for row in reader:
                 print(row)
 
@@ -67,8 +67,7 @@ class Command(BaseCommand):
                     print(e)
                     print("Error creating DATA database object...")
 
-
-        # do the same as above but for the metadata
+        # Do the same as the above but for the metadata
         with open(str(base_dir) + '/countrydata/data/CO2_metadata.csv', 'r') as file:
             reader = csv.reader(file, delimiter=',')
             next(reader)
@@ -87,4 +86,3 @@ class Command(BaseCommand):
                 except Exception as e:
                     print(e)
                     print("Error creating METADATA database object...")
-

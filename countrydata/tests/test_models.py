@@ -1,6 +1,5 @@
 from django.test import TestCase
-from countrydata.models import Data,Metadata
-# Create your tests here.
+from countrydata.models import Data, Metadata
 
 class TestModels(TestCase):
 
@@ -53,4 +52,3 @@ class TestModels(TestCase):
         self.assertEqual(data.countryName,"TestName")
         all_data = data.objects.all()
         self.assertEqual(all_data.count(),2)
-        

@@ -1,5 +1,5 @@
-from django.test import Client,TestCase
-from countrydata.models import Data,Metadata
+from django.test import Client, TestCase
+from countrydata.models import Data, Metadata
 
 class TestModels(TestCase):
     def setUp(self):
@@ -102,8 +102,3 @@ class TestModels(TestCase):
         response = self.client.get("/about/",follow=True)
         self.assertEqual(response.status_code,200)
         self.assertTemplateUsed(response,"countrydata/about.html")
-        
-
-
-
-

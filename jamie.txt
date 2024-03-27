@@ -17,3 +17,4 @@
 27 MARCH 2024
 - Updated comparison.html and views.py to display default graph on comparison page (instead of blank and pending for user selection)
 - Updated chartmaker.py to add graph title
+- Updated README.md file
