@@ -1,3 +1,4 @@
 23 MARCH 2024
 - Created templates/about.html 
 - Updated base.html, urls.py & views.py
+- Created tests for the models.py and views.py and all of them were passed
