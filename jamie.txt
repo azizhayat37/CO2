@@ -12,9 +12,9 @@
 - Updated home view in views.py (modified home view to handle year selection and fetch Top 10 Countries based on CO2 emissions for that year)
 
 26 MARCH 2024
-- Updated home.html and views.py to display default table on home page (instead of blank and pending for user selection)
+- Updated home.html and views.py to default display table on home page (instead of showing blank and pending for user selection)
 
 27 MARCH 2024
-- Updated comparison.html and views.py to display default graph on comparison page (instead of blank and pending for user selection)
-- Updated chartmaker.py to add graph title
+- Updated comparison.html and views.py to default display comparison bar chart (instead of showing blank and pending for user selection)
+- Updated chartmaker.py to add bar chart title
 - Updated README.md file
