@@ -10,7 +10,7 @@ The Global CO2 Emissions Dashboard is a Django web application for visualizing a
 
 ### Setup
 To set up the application locally, follow these steps:
-1.	Clone repository to your local machine.
+1.	Clone the repository to your local machine.
         
         git clone 
 
