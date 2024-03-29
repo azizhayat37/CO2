@@ -1,4 +1,10 @@
 23 MARCH 2024
 - Created templates/about.html 
 - Updated base.html, urls.py & views.py
-- Created tests for the models.py and views.py and all of them were passed
+
+26 MARCH 2024
+- Created tests in models.py to test Whether the data was successfully put into the model
+- Test the page response to verify that the correct template and content are returned
+- By passing in two parameters, test Comparison page can compare two sets of data
+- Test whether the About page can respond
+- Generate a test result file
